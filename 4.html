@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nth Prime Number Finder</title>
+</head>
+<body>
+  <script>
+    function isPrime(number) {
+      if (number <= 1) 
+      {
+        return false;
+      }
+      for (let i = 2; i <= Math.sqrt(number); i++) 
+      {
+        if (number % i === 0) 
+        {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    function findNthPrime(n) 
+    {
+      let count = 0;
+      let number = 2;
+      while (count < n)
+       {
+        if (isPrime(number)) 
+        {
+          count++;
+        }
+        number++;
+      }
+      return number - 1;
+    }
+
+    function getValidInput() 
+    {
+      let n;
+      do 
+      {
+        n = parseInt(prompt("Enter a positive integer greater than 0:"));
+      } while (isNaN(n) || n <= 0);
+
+      return n;
+    }
+
+    function displayNthPrime() 
+    {
+      const n = getValidInput();
+      const nthPrime = findNthPrime(n);
+      alert(`The ${n}th prime number is: ${nthPrime}`);
+    }
+
+    displayNthPrime();
+  </script>
+</body>
+</html>

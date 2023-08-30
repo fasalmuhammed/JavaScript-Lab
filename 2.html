@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Classification</title>
+</head>
+<body>
+
+<script>
+function classifyNumber(number) {
+    let divisorsSum = 1;
+
+    for (let i = 2; i <= Math.sqrt(number); i++) {
+        if (number % i === 0) {
+            if (i === number / i) {
+                divisorsSum += i;
+            } else {
+                divisorsSum += i + (number / i);
+            }
+        }
+    }
+
+    if (divisorsSum === number && number !== 1) {
+        return "Perfect";
+    } else if (divisorsSum > number) {
+        return "Abundant";
+    } else {
+        return "Deficient";
+    }
+}
+
+const userInput = prompt("Enter a positive integer:");
+
+const number = parseInt(userInput);
+
+if (isNaN(number) || number <= 0) {
+    alert("Invalid input. Please enter a positive integer.");
+} else {
+    const result = classifyNumber(number);
+    alert(`The number ${number} is ${result}.`);
+}
+</script>
+
+</body>
+</html>

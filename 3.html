@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Triangle Checker</title>
+</head>
+<body>
+  <script>
+    function calculateTriangleArea(a, b, c)
+     {
+      const s = (a + b + c) / 2;
+      return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    function determineTriangleType(a, b, c) {
+      if (a === b && b === c) {
+        return "equilateral";
+      } else if (a === b || a === c || b === c) {
+        return "isosceles";
+      } else {
+        return "scalene";
+      }
+    }
+
+    function checkTriangle() 
+    
+    {
+      const sideA = parseFloat(prompt("Enter the length of side A:"));
+      const sideB = parseFloat(prompt("Enter the length of side B:"));
+      const sideC = parseFloat(prompt("Enter the length of side C:"));
+
+      if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC))
+      {
+        alert("Invalid input. Please enter valid numeric values.");
+        return;
+      }
+
+      if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA) {
+        alert("The given sides cannot form a triangle.");
+      } 
+      else 
+      {
+        const type = determineTriangleType(sideA, sideB, sideC);
+        const area = calculateTriangleArea(sideA, sideB, sideC);
+        alert(`Triangle Type: ${type}\nArea: ${area.toFixed(2)}`);
+      }
+    }
+
+    checkTriangle();
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function Calc() {
+                var r = parseFloat(document.getElementById("radius").value);
+                document.getElementById("area").innerText = 3.14 * r * r;
+                document.getElementById("circum").innerText = 2 * 3.14 * r;
+            }
+        </script>
+        <h3>Enter the radius :</h3>
+        <input type="text" id="radius">
+        <button onclick="Calc()">Calculate</button>
+        <br><br>
+        <h3>Area : <span id="area"></span><br><br>
+        Circumference : <span id="circum"></span></h3>
+    </body>
+</html>
